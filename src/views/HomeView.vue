@@ -6,6 +6,7 @@
     <Children :parentMessage="message" :parentMessage2="message2" />
     <button @click="changeMessage">메세지를 바꿔주세요.</button>
     <EmitParent />
+    <ProvideComponent />
   </div>
 </template>
 
@@ -14,12 +15,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import Message from '@/components/Message.vue'; // @ is an alias to /src
 import Children from '@/components/Children.vue';
 import EmitParent from '@/components/EmitParent.vue';
+import ProvideComponent from '@/components/ProvideComponent.vue';
 
 @Component({
   components: {
     Message,
     Children,
     EmitParent,
+    ProvideComponent,
   },
 })
 export default class HomeView extends Vue {
