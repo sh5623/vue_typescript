@@ -9,6 +9,8 @@
     <ProvideComponent />
     <ModelComponents v-model="agree" @change="changeAgree" />
     <span>{{ agreeText }}</span>
+    <AccordionComponents />
+    <DropdownComponents />
   </div>
 </template>
 
@@ -19,6 +21,8 @@ import Children from '@/components/Children.vue';
 import EmitParent from '@/components/EmitParent.vue';
 import ProvideComponent from '@/components/ProvideComponent.vue';
 import ModelComponents from '@/components/ModelComponent.vue';
+import DropdownComponents from '@/components/DropdownComponents.vue';
+import AccordionComponents from '@/components/AccordionComponents.vue';
 
 @Component({
   components: {
@@ -27,6 +31,8 @@ import ModelComponents from '@/components/ModelComponent.vue';
     EmitParent,
     ProvideComponent,
     ModelComponents,
+    DropdownComponents,
+    AccordionComponents,
   },
 })
 export default class HomeView extends Vue {
