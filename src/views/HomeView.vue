@@ -7,6 +7,8 @@
     <button @click="changeMessage">메세지를 바꿔주세요.</button>
     <EmitParent />
     <ProvideComponent />
+    <ModelComponents v-model="agree" @change="changeAgree" />
+    <span>{{ agreeText }}</span>
   </div>
 </template>
 
@@ -16,6 +18,7 @@ import Message from '@/components/Message.vue'; // @ is an alias to /src
 import Children from '@/components/Children.vue';
 import EmitParent from '@/components/EmitParent.vue';
 import ProvideComponent from '@/components/ProvideComponent.vue';
+import ModelComponents from '@/components/ModelComponent.vue';
 
 @Component({
   components: {
@@ -23,14 +26,22 @@ import ProvideComponent from '@/components/ProvideComponent.vue';
     Children,
     EmitParent,
     ProvideComponent,
+    ModelComponents,
   },
 })
 export default class HomeView extends Vue {
   message: string = "Hi, I'm Kyla.";
   message2: string = "Let's Study Vue.js + TypeScript!";
+  agree: boolean = false;
+  agreeText: string = '동의하지 않습니다.';
 
-  changeMessage() {
+  private changeMessage() {
     this.message2 = 'Studying...';
+  }
+
+  private changeAgree(agree: boolean) {
+    this.agree = agree;
+    this.agreeText = agree ? '동의합니다.' : '동의하지 않습니다.';
   }
 }
 </script>
