@@ -34,12 +34,12 @@ import ToggleComponents from '@/components/ToggleComponents.vue';
 export default class DropdownComponents extends Mixins(ToggleComponents) {}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .dropdown {
-  width: 500px;
-}
-
-.dropdown a {
-  display: list-item;
+  .dropdown-menu {
+    &.show {
+      display: list-item;
+    }
+  }
 }
 </style>

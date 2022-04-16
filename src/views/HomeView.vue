@@ -1,16 +1,18 @@
 <template>
-  <div class="home">
+  <div>
     <img alt="Vue logo" src="../assets/logo.png" width="60" /> Hello Kyla :)
     <hr />
-    <Message />
-    <Children :parentMessage="message" :parentMessage2="message2" />
-    <button @click="changeMessage">메세지를 바꿔주세요.</button>
-    <EmitParent />
-    <ProvideComponent />
-    <ModelComponents v-model="agree" @change="changeAgree" />
-    <span>{{ agreeText }}</span>
-    <AccordionComponents />
-    <DropdownComponents />
+    <div class="home">
+      <Message />
+      <Children :parentMessage="message" :parentMessage2="message2" />
+      <button @click="changeMessage">메세지를 바꿔주세요.</button>
+      <EmitParent />
+      <ProvideComponent />
+      <ModelComponents v-model="agree" @change="changeAgree" />
+      <span>{{ agreeText }}</span>
+      <AccordionComponents />
+      <DropdownComponents />
+    </div>
   </div>
 </template>
 
@@ -52,8 +54,8 @@ export default class HomeView extends Vue {
 }
 </script>
 
-<style>
-img {
-  align-items: left;
+<style lang="scss" scoped>
+.home {
+  text-align: center;
 }
 </style>

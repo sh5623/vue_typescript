@@ -23,10 +23,3 @@ import ToggleComponents from '@/components/ToggleComponents.vue';
 })
 export default class AccordionComponents extends Mixins(ToggleComponents) {}
 </script>
-
-<style>
-.card {
-  width: 500px;
-  margin: 10px;
-}
-</style>
