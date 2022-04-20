@@ -15,7 +15,7 @@ export default class Children extends Vue {
   @Prop() alertMessage: string = '';
 
   @Watch('parentMessage2')
-  update(value: string, oldValue: string) {
+  update() {
     this.alertMessage = '메세지를 업데이트 했습니다.';
   }
 }

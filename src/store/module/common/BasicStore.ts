@@ -7,7 +7,7 @@ interface State {
   count: number;
 }
 
-const store: StoreOptions<State> = {
+const basicStore: StoreOptions<State> = {
   state: {
     count: 0,
   },
@@ -29,9 +29,6 @@ const store: StoreOptions<State> = {
       }
     },
   },
-  getters: {
-    count: (state: State) => state.count,
-  },
 };
 
-export default new Vuex.Store(store);
+export default new Vuex.Store(basicStore);
