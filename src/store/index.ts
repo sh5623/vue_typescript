@@ -3,14 +3,9 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import BasicStore from './module/common/BasicStore';
-import ModuleStore from './module/common/ModuleStore';
-
-const store = new Vuex.Store({
-  modules: {
-    BasicStore: BasicStore,
-    ModuleStore: ModuleStore,
-  },
+export default new Vuex.Store({
+  state: {},
+  mutations: {},
+  actions: {},
+  modules: {},
 });
-
-export default store;
