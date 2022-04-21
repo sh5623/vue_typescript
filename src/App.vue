@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/">Basic Vue</router-link> |
-      <router-link to="/vuex">Vuex</router-link>
+      <router-link to="/vuex">Vuex</router-link> |
+      <router-link to="/todo">Todo List</router-link>
     </nav>
     <router-view />
   </div>

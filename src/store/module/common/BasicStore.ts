@@ -14,7 +14,6 @@ class BasicModule extends VuexModule {
 
   // getters
   get countData() {
-    console.log(this.count);
     return this.count;
   }
 

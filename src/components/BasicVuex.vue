@@ -12,16 +12,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { BasicStore } from '@/store/module/common/BasicStore';
-import { ModuleStore } from '@/store/module/common/ModuleStore';
 
 @Component
 export default class BasicVuex extends Vue {
   get count() {
     return BasicStore.countData;
-  }
-
-  created() {
-    console.log(ModuleStore);
   }
 
   private increase() {
