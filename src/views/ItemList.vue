@@ -10,6 +10,7 @@
       :id="item.id"
       :title="item.title"
       :status="item.status"
+      @change="renderItems"
     />
   </div>
 </template>
@@ -17,6 +18,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import Item from '@/components/TodoComponents/Item.vue';
+import { TodoStore } from '@/store/module/todo/TodoStore';
 
 @Component({
   components: {
@@ -24,23 +26,44 @@ import Item from '@/components/TodoComponents/Item.vue';
   },
 })
 export default class ItemList extends Vue {
-  private data: any[] = [
-    { id: 0, title: 'test0', status: 'active' },
-    { id: 1, title: 'test1', status: 'active' },
-    { id: 2, title: 'test2', status: 'clear' },
-  ];
+  public items: any[] = [];
 
-  public items: any[] = this.data;
+  get todoList() {
+    return TodoStore.todoList;
+  }
+
+  created() {
+    this.initRenderTodoList(this.$route.params.status);
+  }
+
+  private async initRenderTodoList(status: string) {
+    if (!status) {
+      this.items = await TodoStore.allTodoList;
+    } else if (status === 'active') {
+      this.items = await TodoStore.activeTodoList;
+    } else if (status === 'clear') {
+      this.items = await TodoStore.clearTodoList;
+    }
+  }
+
+  public renderItems() {
+    if (this.$route.params.status === 'active') {
+      this.items = TodoStore.activeTodoList;
+    } else if (this.$route.params.status === 'clear') {
+      this.items = TodoStore.clearTodoList;
+    } else {
+      this.items = TodoStore.allTodoList;
+    }
+  }
 
   @Watch('$route.params.status')
   private routeUpdate(newValue: string) {
-    if (!newValue) {
-      this.items = this.data;
-    } else if (newValue === 'active' || newValue === 'clear') {
-      this.items = this.data.slice().filter((item: any) => {
-        return item.status === newValue;
-      });
-    }
+    this.initRenderTodoList(newValue);
+  }
+
+  @Watch('todoList')
+  private changeTodoList() {
+    this.renderItems();
   }
 }
 </script>
