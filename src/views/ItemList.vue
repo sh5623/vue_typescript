@@ -33,7 +33,8 @@ export default class ItemList extends Vue {
   }
 
   created() {
-    this.initRenderTodoList(this.$route.params.status);
+    TodoStore.initTodoList();
+    //this.initRenderTodoList(this.$route.params.status);
   }
 
   private async initRenderTodoList(status: string) {

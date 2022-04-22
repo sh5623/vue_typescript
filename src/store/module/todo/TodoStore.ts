@@ -1,10 +1,13 @@
 import {
+  Action,
   getModule,
   Module,
   Mutation,
   VuexModule,
 } from 'vuex-module-decorators';
 import store from '../..';
+import LocalApi from '@/service/api/local/localApi';
+import { AxiosResponse } from 'axios';
 
 export interface Item {
   id: number;
@@ -15,11 +18,7 @@ export interface Item {
 @Module({ store, name: 'Todo', namespaced: true, dynamic: true })
 class TodoModule extends VuexModule {
   // state
-  public todoList: Item[] = [
-    { id: 0, title: 'test0', status: 'active' },
-    { id: 1, title: 'test1', status: 'active' },
-    { id: 2, title: 'test2', status: 'clear' },
-  ];
+  public todoList: Item[] = [];
 
   // getters
   get allTodoList() {
@@ -50,7 +49,18 @@ class TodoModule extends VuexModule {
     this.todoList.splice(id, 1);
   }
 
+  @Mutation
+  public setTodoList(todoList: Item[]) {
+    this.todoList = todoList;
+  }
+
   // actions
+  @Action({ rawError: true })
+  public async initTodoList() {
+    const response: AxiosResponse<{ todoList: Item[] }> =
+      await LocalApi.instance.get('todo.json');
+    this.setTodoList(response.data.todoList);
+  }
 }
 
 export const TodoStore = getModule(TodoModule);
