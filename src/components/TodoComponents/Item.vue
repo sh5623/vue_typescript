@@ -18,19 +18,29 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import { TodoStore } from '@/store/module/todo/TodoStore';
 
 @Component
 export default class Item extends Vue {
-  @Prop() readonly id!: string;
+  @Prop() readonly id!: number;
   @Prop() readonly title!: string;
-  @Prop() readonly status!: 'active' | 'clear';
+  @Prop() readonly status!: string;
 
-  private changeStatus() {
-    console.log('changeStatus');
+  private changeStatus(event: Event) {
+    const checked: boolean = (event.target as HTMLInputElement).checked;
+
+    if (checked) {
+      TodoStore.changeStatus({ id: this.id, status: 'clear' });
+      this.$emit('change');
+    } else {
+      TodoStore.changeStatus({ id: this.id, status: 'active' });
+      this.$emit('change');
+    }
   }
 
   private removeItem() {
-    console.log('removeItem');
+    TodoStore.removeItem(this.id);
+    this.$emit('change');
   }
 }
 </script>
