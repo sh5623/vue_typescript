@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import TodoList from '../views/TodoList.vue';
+import Games from '../views/Games.vue';
 
 Vue.use(Router);
 
@@ -27,6 +28,24 @@ export default new Router({
       path: '/todo/:status?',
       name: 'todo',
       component: TodoList,
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: Games,
+      children: [
+        {
+          name: 'baseball',
+          path: 'baseball',
+          component: () => import('@/components/GamesComponents/BaseBall.vue'),
+        },
+        {
+          name: 'response-check',
+          path: 'response-check',
+          component: () =>
+            import('@/components/GamesComponents/ResponseCheck.vue'),
+        },
+      ],
     },
   ],
 });
