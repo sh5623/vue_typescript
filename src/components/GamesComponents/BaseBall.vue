@@ -25,7 +25,7 @@
 import { Component, Ref, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Header extends Vue {
+export default class BaseBall extends Vue {
   private result = '';
   private value = '';
   private tries: Array<Record<string, string>> = [];
