@@ -3,7 +3,7 @@
     <h5>Play Response Check</h5>
     <div id="screen" :class="state" @click="clickScreen">{{ message }}</div>
     <div>
-      <div>
+      <div v-if="result.length > 0">
         평균시간 :
         {{ resultTime }}ms
       </div>

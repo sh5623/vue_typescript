@@ -7,6 +7,12 @@
         <router-link to="/games/response-check">ResponseCheck</router-link>
       </li>
       /
+      <li>
+        <router-link to="/games/rock-paper-scissors"
+          >Rock Paper Scissors</router-link
+        >
+      </li>
+      /
     </ol>
   </div>
 </template>
