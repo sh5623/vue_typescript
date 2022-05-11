@@ -45,6 +45,12 @@ export default new Router({
           component: () =>
             import('@/components/GamesComponents/ResponseCheck.vue'),
         },
+        {
+          name: 'rock-paper-scissors',
+          path: 'rock-paper-scissors',
+          component: () =>
+            import('@/components/GamesComponents/RockPaperScissors.vue'),
+        },
       ],
     },
   ],
